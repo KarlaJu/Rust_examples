@@ -1,0 +1,6 @@
+[package]
+name = "StringCalculatorRustVersion"
+version = "0.1.0"
+authors = ["karlaJu <karla@makingdevs.com>"]
+
+[dependencies]

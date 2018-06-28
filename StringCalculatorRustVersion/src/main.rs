@@ -15,15 +15,13 @@ pub fn verify_the_string_is_empty(string: &str) -> bool{
 }
 
 pub fn do_the_string_calculator(string: &str) -> i32 {
-  //for line in string.split(','){
-    //println!("{}", line);
-  //}
-  //let mut numbers = string.parse::<i32>().unwrap();
-  //  println!("{}",numbers );
-  //  return numbers;
-  //let vec =split.colletc::<Vec<&str>>();
-  let v = string.split(',').collect::<Vec<parse::<i32>().unwrap()>>;
-
+	let split = string.split(',');
+	let mut sum = 0;
+	for number_in_string in split {
+		let number = number_in_string.parse::<i32>().unwrap();
+		sum = sum + number;
+	}
+	return sum
 }
 
 

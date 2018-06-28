@@ -56,4 +56,14 @@ mod tests {
         let string = "7,8".to_string();
         assert_eq!(15, add(&string));
     }
+    
+    #[test]
+    fn any_numbers() {
+    	let string = "1,2,3".to_string();
+        assert_eq!(6, add(&string));
+        let string = "3,4,5,6,7,8,9".to_string();
+        assert_eq!(42, add(&string));
+        let string = "1,1,1,1,1,1,1,1,1,1,1,1,1,1".to_string();
+        assert_eq!(14, add(&string));
+    }
 }

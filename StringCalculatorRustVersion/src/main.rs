@@ -1,4 +1,4 @@
-pub fn add(string: &str) -> i32 {
+pub fn add(string: &str) -> u32 {
     if verify_the_string_is_empty(string) {
     	return 0;
     }
@@ -18,17 +18,19 @@ pub fn replace_break_lines_in_string(string: &str) -> String {
     return string.replace("\n", ",");
 }
 
-pub fn do_the_string_calculator(string: &str) -> i32 {
+pub fn do_the_string_calculator(string: &str) -> u32 {
+    let mut only_numbers = "".to_string();
     let string_without_break_lines = replace_break_lines_in_string(string);
-	let split = string_without_break_lines.split(',');
-	let mut sum = 0;
-	for number_in_string in split {
-		let number = number_in_string.parse::<i32>().unwrap();
-		sum = sum + number;
-	}
-	return sum;
+	let numbers_to_char:Vec<char> = string_without_break_lines.chars().collect();
+    for caracter in &numbers_to_char{
+        if caracter.is_digit(10) {
+            only_numbers = only_numbers + &caracter.to_string();
+        }
+    }
+    const RADIX: u32 = 10;
+    let sum = only_numbers.chars().map(|c| c.to_digit(RADIX).unwrap()).sum::<u32>();
+    return sum;  
 }
-
 
 
 
@@ -89,7 +91,7 @@ mod tests {
         let string = "//;\n1;2;3".to_string();
         assert_eq!(6, add(&string));
         let string = "//#\n3#4#5#6#7#8".to_string();
-        assert_eq!(42, add(&string));
+        assert_eq!(33, add(&string));
         let string = "//|\n1|1|1|1|1|1|1|1|1|1|1|1|1|1".to_string();
         assert_eq!(14, add(&string));
     }

@@ -39,7 +39,7 @@ mod tests {
     }
 
     #[test]
-    fn one_number() {
+    fn test_one_number() {
     	let string = "7".to_string();
         assert_eq!(7, add(&string));
         let string = "4".to_string();
@@ -49,7 +49,7 @@ mod tests {
     }
 
     #[test]
-    fn two_numbers() {
+    fn test_sum_of_two_numbers() {
     	let string = "1,2".to_string();
         assert_eq!(3, add(&string));
         let string = "3,4".to_string();
@@ -59,7 +59,7 @@ mod tests {
     }
     
     #[test]
-    fn any_numbers() {
+    fn test_sum_of_any_numbers() {
     	let string = "1,2,3".to_string();
         assert_eq!(6, add(&string));
         let string = "3,4,5,6,7,8,9".to_string();
@@ -69,7 +69,7 @@ mod tests {
     }
     
     #[test]
-    fn any_numbers_with_break_lines() {
+    fn sum_any_numbers_with_break_lines() {
     	let string = "1,2\n3".to_string();
         assert_eq!(6, add(&string));
         let string = "3,4\n5,6,7\n8,9".to_string();

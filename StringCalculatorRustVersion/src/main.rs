@@ -95,4 +95,15 @@ mod tests {
         let string = "//|\n1|1|1|1|1|1|1|1|1|1|1|1|1|1".to_string();
         assert_eq!(14, add(&string));
     }
+
+    #[should_panic]
+    #[test]
+    fn test_negative_numbers() {
+        let _string = "1,2,3,-4,5,6".to_string();
+        panic!("negatives not allowed -4");
+        let _string = "1,-2,3,-4,5,-6".to_string();
+        panic!("negatives not allowed -2 -4 -6");
+    }
+
+
 }

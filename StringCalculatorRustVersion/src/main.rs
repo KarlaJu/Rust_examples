@@ -18,20 +18,24 @@ pub fn replace_break_lines_in_string(string: &str) -> String {
     return string.replace("\n", ",");
 }
 
-pub fn do_the_string_calculator(string: &str) -> u32 {
+pub fn quit_delimiters_in_the_string(string: &str) -> String {
     let mut only_numbers = "".to_string();
     let string_without_break_lines = replace_break_lines_in_string(string);
-	let numbers_to_char:Vec<char> = string_without_break_lines.chars().collect();
+    let numbers_to_char:Vec<char> = string_without_break_lines.chars().collect();
     for caracter in &numbers_to_char{
         if caracter.is_digit(10) {
             only_numbers = only_numbers + &caracter.to_string();
         }
     }
-    const RADIX: u32 = 10;
-    let sum = only_numbers.chars().map(|c| c.to_digit(RADIX).unwrap()).sum::<u32>();
-    return sum;  
+    return only_numbers;
 }
 
+pub fn do_the_string_calculator(string: &str) -> u32 {
+    const RADIX: u32 = 10;
+    let string_with_only_numbers = quit_delimiters_in_the_string(string);
+    let sum = string_with_only_numbers.chars().map(|c| c.to_digit(RADIX).unwrap()).sum::<u32>();
+    return sum;  
+}
 
 
 
@@ -99,10 +103,11 @@ mod tests {
     #[should_panic]
     #[test]
     fn test_negative_numbers() {
-        let _string = "1,2,3,-4,5,6".to_string();
-        panic!("negatives not allowed -4");
-        let _string = "1,-2,3,-4,5,-6".to_string();
-        panic!("negatives not allowed -2 -4 -6");
+        let string = "1,2,3,-4,5,6".to_string();
+        panic!("negatives not allowed -4", add(&string));
+        let string = "1,-2,3,-4,5,-6".to_string();
+        panic!("negatives not allowed -2 -4 -6", add(&string));
+        panic!("{:?}", );
     }
 
 

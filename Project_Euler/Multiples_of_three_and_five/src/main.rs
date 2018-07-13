@@ -1,9 +1,11 @@
-pub fn add(int z:&int ) {
+pub fn add(number: i32 ) -> i32 {
     //Natural numbers, multiples of 3 or 5
-    let number_three;
-    let number_five;
-    if 
-    println!("Hello, world!");
+    //for (int i = 0; i < 10; i++){
+      if number % 3 == 0  || number % 5 == 0{
+        return 0;
+      }
+      return 1;
+    //}
 }
 
 
@@ -12,8 +14,21 @@ mod tests {
     use super::add;
 
     #[test]
-    fn using_empty_string() {
-    	let string = 3;
-      assert_eq!(0, add(&3));
+    fn testing_multiples_of_three() {
+    	let number = 3;
+      assert_eq!(0, add(number));
     }
+
+    #[test]
+    fn testing_multiples_of_five() {
+      let number = 5;
+      assert_eq!(0, add(number));
+    }
+
+    #[test]
+    fn testing_the_second_multiples_of_five() {
+      let number = 10;
+      assert_eq!(0, add(number));
+    }
+
 }
